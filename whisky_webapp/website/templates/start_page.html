@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    {% load static %}
+    <link href="{% static 'css/start_page.css' %}"  rel="stylesheet">
+</head>
+
+
+<div id="imageDiv" style="background: url('{{path}}/media/whisky.jpg') no-repeat center; background-size: cover;"></div>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center">
+  <main class="main-text px-3 text-white">
+  <h1>Analyse Your Whisky</h1>
+  <p class="lead">
+    Explore the unique aroma of your whisky or determine the single malt whiskies in your blend. 
+    You can compare your whisky with 54 different aromas from "Le Nez du Whisky" by Jean Lenoir. 
+    This is a great way to enhance your understanding of the intricate flavors and aromas that make up your favorite spirit.
+  </p>
+  </main>
+</div>
+
+
+
+{% endblock content %}
+{% block scripts %}
+    <!-- <script src="{% static 'js/start_page.js' %}"></script> -->
+    
+{% endblock scripts %}

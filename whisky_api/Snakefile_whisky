@@ -1,0 +1,90 @@
+configfile: "config.yml"
+
+rule all:
+    input:
+       expand("rule6.done")
+       
+
+rule raw_conversion:
+    params:
+        raw_aromas = config["RAW_DATA_AROMA"],
+        xml_aromas = config["XML_DATA_AROMA"],
+        raw_samples = config["RAW_DATA_SAMPLE"],
+        xml_samples = config["XML_DATA_SAMPLE"]
+    output:
+        temp(touch("rule1.done"))
+    shell:
+        """
+        docker pull chambm/pwiz-skyline-i-agree-to-the-vendor-licenses #Voor installeren van docker
+        docker run -it --rm -v `pwd`:`pwd` -w `pwd` chambm/pwiz-skyline-i-agree-to-the-vendor-licenses wine msconvert {params.raw_aromas}/*.raw --mzXML -o {params.xml_aromas}
+        docker run -it --rm -v `pwd`:`pwd` -w `pwd` chambm/pwiz-skyline-i-agree-to-the-vendor-licenses wine msconvert {params.raw_samples}/*.raw --mzXML -o {params.xml_samples}
+        """
+
+rule mzxml_conversion_sample:
+    input:
+        "rule1.done"
+    params:
+        xml_dir = config["XML_DATA_SAMPLE"],
+        cdf_dir = config["CDF_DATA_SAMPLE"]
+    output:
+        temp(touch("rule2.done"))
+    conda:
+        "fileconversion.yml"
+    script:
+        "mzxml_converter.R"
+
+
+rule mzxml_conversion_aroma:
+    input:
+        "rule2.done"
+    params:
+        xml_dir = config["XML_DATA_AROMA"],
+        cdf_dir = config["CDF_DATA_AROMA"]
+    output:
+        temp(touch("rule3.done"))
+    conda:
+        "fileconversion.yml"
+    script:
+        "mzxml_converter.R"
+
+
+rule load_sample_data:
+    input:
+        "rule3.done"
+    params:
+       locations = [config["CDF_DATA_SAMPLE"], config["TIC_DATA_SAMPLE"], config["MONA_FILE"]],
+       data_type = "sample"
+    output:
+        temp(touch("rule4.done"))
+    conda:
+        "database.yml"
+    script:
+        "gather_dbdata.py"
+
+
+rule load_aroma_data:
+    input:
+        "rule4.done"
+    params:
+        locations = [config["CDF_DATA_AROMA"], config["TIC_DATA_AROMA"], config["AROMA_DATA"], config["MONA_FILE"]],
+        data_type = "aroma" 
+    output:
+        temp(touch("rule5.done"))
+    conda:
+        "database.yml"
+    script:
+        "gather_dbdata.py"
+
+
+rule load_whisky_data:
+    input:
+        "rule5.done"
+    params:
+        locations = config["WHISKY_DATA"],
+        data_type = "whisky"
+    output:
+        temp(touch("rule6.done"))
+    conda:
+        "database.yml"
+    script:
+        "gather_dbdata.py"

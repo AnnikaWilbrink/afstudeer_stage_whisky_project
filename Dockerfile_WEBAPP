@@ -1,0 +1,11 @@
+FROM mambaorg/micromamba:0.27.0
+
+COPY --chown=$MAMBA_USER:$MAMBA_USER env.yml /tmp/env.yml
+
+RUN micromamba install -y -n base -f /tmp/env.yml && \
+    micromamba clean --all --yes
+
+WORKDIR /webapp
+
+COPY --chown=$MAMBA_USER:$MAMBA_USER ./website /webapp/website
+

@@ -1,0 +1,35 @@
+
+#whiskyList {
+    height: 60vh;
+    z-index:1;
+}
+
+#compare-btn {
+    float: right;
+    margin-right: 15%;
+}
+
+#select-btn {
+    float: left;
+    margin-left: 15%;
+}
+
+#header{
+    box-shadow: 0px 10px 10px -15px rgba(0, 0, 0, 0.2);
+    z-index:2;
+}
+
+.border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#red {
+    color:rgba(253, 67, 67, 0.9); 
+    font-weight: bold;
+}
+
+#blue{
+    color:rgba(77, 77, 255, 0.9); 
+    font-weight: bold;
+
+}

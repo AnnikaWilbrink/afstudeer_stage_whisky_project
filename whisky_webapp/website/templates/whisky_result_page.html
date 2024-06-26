@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/whisky_result_page.css' %}">
+</head>
+
+<div id="whiskyContainer" class="w-100 row">
+  <p class="fs-3 p-3 fw-bold text-center">Comparing results of {{whisky_dict.whisky_name}}</p>
+  <div id="similarityTable" class="col">
+    <table class="table table-hover mx-3">
+        <thead>
+            <tr>
+              <th class="num text-center" scope="col">#</th>
+              <th class="" scope="col">Whisky</th>
+              <th class="text-center" scope="col">Similarity</th>
+            </tr>
+          </thead>
+          <tbody class="overflow-auto">
+            {% for item in whisky_list %}
+                <tr>
+                <th class="num text-center" scope="row">{{item.count}}</th>
+                <td class="name" scope="row">{{item.whisky_name}}</td>
+                <td class="text-center" scope="row">{{item.similarity}}%</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+  </div>
+  <div id="clusterPlot" class="col-3">
+    {{ div| safe}}
+  </div>
+</div>
+
+
+
+{% endblock content %}
+{% block scripts %}
+    <!-- <script src="{% static 'script_start_page.js' %}"></script> -->
+    {{script| safe}}
+{% endblock scripts %}

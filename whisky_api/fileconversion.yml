@@ -1,0 +1,9 @@
+name: snake
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+  - r-biocmanager
+  - bioconductor-xcms

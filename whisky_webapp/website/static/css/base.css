@@ -1,0 +1,21 @@
+html, body {
+    overflow:hidden; 
+    height: 100%; 
+    /* width: 100%;  */
+    margin:0;
+}
+
+#logo {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    height: 65px;
+    width: 160px
+}
+
+.navbar-nav > li{
+    /* margin-left:8px;
+    margin-right:8px; */
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }

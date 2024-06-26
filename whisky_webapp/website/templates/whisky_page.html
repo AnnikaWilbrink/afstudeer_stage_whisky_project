@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    {% load static %}
+    <link href="{% static 'css/whisky_page.css' %}"  rel="stylesheet">
+</head>
+
+<div id="listWrapper" class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white mx-2 my-3">
+  <div id="header" class="d-flex flex-row flex-shrink-0 p-3 justify-content-around link-dark text-decoration-none border-bottom">
+    <div class="d-flex flex-row align-items-center flex-shrink-0">
+      <span class="fs-5 fw-semibold">Whiskies</span>
+    </div>
+    <div class="d-flex flex-row-reverse align-items-center w-25">
+      <input id="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+  </div>
+  <div id="sampleList" class="list-group list-group-flush border-bottom overflow-auto">
+    {% for items in whisky_list %}
+      <a id="whiskyLink" href="/whisky_{{items.whisky_code}}" class="list-group-item list-group-item-action py-3 lh-tight">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">{{items.whisky_name}}</strong>
+          <small class="text-muted">{{items.whisky_brand}}</small>
+        </div>
+        <div class="col-10 mb-1 small">{{items.whisky_barrel}}</div>
+      </a>
+    {% endfor %}
+    
+    </div>
+  </div>
+
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'js/filter_search.js' %}"></script>
+    
+{% endblock scripts %}

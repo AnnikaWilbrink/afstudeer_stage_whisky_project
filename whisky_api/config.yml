@@ -1,0 +1,21 @@
+RAW_DATA_AROMA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/aroma_raw/"
+
+XML_DATA_AROMA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/aroma_xml/"
+
+CDF_DATA_AROMA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/aroma_cdf/"
+
+TIC_DATA_AROMA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/aroma_tics/"
+
+AROMA_DATA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/le_nez_du_whisky_aromas.txt"
+
+RAW_DATA_SAMPLE: "/exports/nas/wilbrink.a/whisky_project/whisky_data/training_whisky_raw/"
+
+XML_DATA_SAMPLE: "/exports/nas/wilbrink.a/whisky_project/whisky_data/training_whisky_xml/"
+
+CDF_DATA_SAMPLE: "/exports/nas/wilbrink.a/whisky_project/whisky_data/training_whisky_cdf/"
+
+TIC_DATA_SAMPLE: "/exports/nas/wilbrink.a/whisky_project/whisky_data/training_whisky_tics/"
+
+WHISKY_DATA: "/exports/nas/wilbrink.a/whisky_project/whisky_data/whisky_data.xlsx"
+
+MONA_FILE: "/exports/nas/wilbrink.a/whisky_project/whisky_data/MoNA-export-GC-MS_Spectra2023.json"

@@ -1,0 +1,36 @@
+
+thead, tbody {
+    display: block;
+    width: 95%
+}
+
+tbody {
+    height: 60vh;
+
+}
+
+tr {
+    width:100%;
+    display: table;
+    table-layout: fixed;
+}
+
+th.num {
+    width: 7.5%;
+}
+
+.name {
+    width: 50%
+}
+
+.sim {
+    width: 10%;
+}
+
+#clusterPlot {
+    width:65%;
+}
+
+#similarityTable {
+    width: 35%;
+}

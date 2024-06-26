@@ -1,0 +1,54 @@
+.vl.note_floral {
+    border-left: 3px solid #ff2462; 
+    height: auto;
+}
+
+.vl.note_fruity {
+    border-left: 3px solid #ffc037; 
+    height: auto;
+}
+
+.vl.note_woodsy {
+    border-left: 3px solid #fc4f1a; 
+    height: auto;
+}
+
+.vl.note_various {
+    border-left: 3px solid #ffe713; 
+    height: auto;
+}
+
+.vl.note_phenolic {
+    border-left: 3px solid #ffad15; 
+    height: auto;
+}
+
+
+#aroma_id.note_floral {
+    color: #ff2462;
+    font-size: 200px;
+}
+
+#aroma_id.note_fruity {
+    color: #ffc037;
+    font-size: 200px;
+}
+
+#aroma_id.note_woodsy {
+    color: #fc4f1a;
+    font-size: 200px;
+}
+
+#aroma_id.note_various {
+    color: #ffe713;
+    font-size: 200px;
+}
+
+#aroma_id.note_phenolic {
+    color: #ffad15;
+    font-size: 200px;
+}
+
+.aroma-text {
+    max-height: 50vh;
+}

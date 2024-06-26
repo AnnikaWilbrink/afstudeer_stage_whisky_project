@@ -1,0 +1,21 @@
+.main-text {
+    padding: 15rem;   
+}
+
+#imageDiv {
+  position: absolute;
+  top: 100px;
+  left: -1%;
+  width: 102%;
+  height: 87.5%;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+
+.cover-container {
+  max-width: 42em;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

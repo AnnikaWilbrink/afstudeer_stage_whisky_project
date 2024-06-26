@@ -1,0 +1,28 @@
+.navbar-custom {
+    height: 100px;
+  }
+
+#listWrapper {
+  position: absolute;
+  height: 87.5%;
+  width: 99.5%;
+}
+
+#whiskyLink{
+  width: 85%;
+  margin:auto;
+  -webkit-transition: 200ms ease-in-out;
+	-o-transition: 200ms ease-in-out;
+	transition: 200ms ease-in-out;
+  
+}
+
+#header{
+  z-index: 2;
+  box-shadow: 0px 10px 10px -15px rgba(0, 0, 0, 0.2);
+
+}
+
+sampleList{
+  z-index: 1;
+}

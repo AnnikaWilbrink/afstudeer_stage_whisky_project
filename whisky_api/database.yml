@@ -1,0 +1,18 @@
+name: snake
+channels:
+  - conda-forge
+  - bioconda
+  - domdfcoding
+  - defaults
+dependencies:
+  - sqlite
+  - pandas
+  - numpy
+  - pymassspec
+  - git
+  - matchms
+  - pip
+  - ijson
+  - pip:
+    - git+https://github.com/berlinguyinca/spectra-hash.git#egg=splash&subdirectory=python
+  

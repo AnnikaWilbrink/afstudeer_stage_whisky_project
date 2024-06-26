@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aroma_info_page.css' %}">
+</head>
+
+<div class="container col-xxl-8 px-auto py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div id="aroma_id" class="col-lg-2 d-block mx-auto mb-4 fw-bold note_{{aroma_dict.aroma_notes}}">
+            {{aroma_dict.aroma_id}}
+        </div>
+        <div class="col-lg-8">
+            <div class="vl p-3 note_{{aroma_dict.aroma_notes}}">
+                <h1 class="display-5 fw-bold lh-1 mb-3 text-nowrap">{{aroma_dict.aroma_name}}</h1>
+                <p class="text-muted text-capitalize">&ensp;{{aroma_dict.aroma_notes}} - {{aroma_dict.aroma_annotation}}</p>
+                <p class="lead overflow-auto aroma-text">{{aroma_dict.aroma_description|safe}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+{% block scripts %}
+    <!-- <script src="{% static 'js/start_page.js' %}"></script> -->
+{% endblock scripts %}

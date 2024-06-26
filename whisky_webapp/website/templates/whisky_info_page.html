@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/whisky_info_page.css' %}">
+</head>
+
+<div id="whiskyContainer">
+    <p class="fs-3 p-3 fw-bold">{{whisky_dict.whisky_name}}</p>
+    <div class="row align-items-start">
+        <div id="whiskyInfo" class="col d-flex flex-wrap bd-highlight mb-3 px-3">
+            <p class="px-3 text-muted">Brand:</p><p>{{whisky_dict.whisky_brand}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Barrel:</p><p>{{whisky_dict.whisky_barrel}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Bottle date:</p><p>{{whisky_dict.whisky_bottle_date}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Age:</p><p >{{whisky_dict.whisky_age}}</p> 
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Grain:</p><p class="text-capitalize">{{whisky_dict.whisky_grain}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Alcohol:</p><p>{{whisky_dict.whisky_alcohol_perc}}%</p>
+            <!-- <p class="px-3"></p>
+            <p class="px-3 text-muted">Filtration:</p><p>{{whisky_dict.whisky_filtration}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Distillation frequency:</p><p>{{whisky_dict.whisky_distillation_freq}}</p> 
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Distillation date:</p><p>{{whisky_dict.whisky_distillation_date}}</p>
+            <p class="px-3"></p>
+            <p class="px-3 text-muted">Distillation Technique:</p><p>{{whisky_dict.whisky_distillation_technique}}</p> -->
+            <div>
+                <div class="row">
+                    <img class="p-3" src="{{plot_path}}">
+                </div>
+                <div class="row">
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <a class="btn btn-secondary my-4" data-bs-toggle="modal" href="#explanation" role="button">Explanation plot</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="explanation" aria-hidden="true" aria-labelledby="explanation" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-lg" style="min-width:75%">
+                <div class="modal-content">
+                    <div class="modal-header hstack">
+                    <h5 class="modal-title" id="explanationBar" style="min-width:50.75%">Explanation Barplot</h5>
+                    <h5 class="modal-title" id="explanation">Explanation chromatogram</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col border-right">
+                            In the bar plot, the x-axis shows the aromas that are present in the whisky.<br><br> The <span id="red">red</span> bars show the 
+                            percentage of aroma in the whisky. These bars can be read from the left y-axis called <b>"% aroma"</b>.<br><br>
+                            The <span id="blue">blue</span> bars show the percentage of matching compounds of the aroma in the whisky. 
+                            These bars can be read from the right y-axis called <b>"% matching compounds"</b> and are futher explained in the chromatogram.
+                        </div>
+                        <div class="col">   
+                            A chromatogram is a two-dimensional plot with <b>intensity</b> on the y-axis and <b>retention time</b> on the x-axis. 
+                            Intensity is the concentration of the detector response and retention time is the time interval between the injection 
+                            of the whisky and the peak's maximum.<br><br>
+                            The detector gives a response as a peak, whose height depends on the concentration of a compound. Each peak represents 
+                            a compound in the whisky. An aroma is composed of specific compounds that make up its smell/taste. If a peak is present in both 
+                            an aroma and the whisky, then the whisky has that aroma. The height of the peak indicates how much that aroma 
+                            is present in the whisky.<br><br> 
+                            In the chromatogram, the <span id="blue">blue</span> line represents the chromatogram of the whisky, and the <span id="red">red</span> 
+                            line represents the chromatogram of the aroma. In the upper right corner, there's an interactive legend. Click on an aroma name to make the 
+                            chromatogram of that aroma visible or invisible. The dots of the same color show the matching peaks. If you hover over those dots, 
+                            the compound of that peak is displayed.<br><br>
+                            Click the <b>"Chromatogram"</b> button below to view the chromatogram.
+                        </div>        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-sm" data-bs-target="#chromatogram" data-bs-toggle="modal" data-bs-dismiss="modal">Chromatogram</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="chromatogram" aria-hidden="true" aria-labelledby="chromatogram" tabindex="-1">
+                <div class="modal-dialog modal-xl text-center" style="min-width:85%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="chromatogram">Chromatogram of {{whisky_dict.whisky_name}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{ div| safe}}
+                    </div>
+                    <div class="modal-footer text-center"> 
+                        <button class="btn btn-secondary btn-sm" data-bs-target="#explanation" data-bs-toggle="modal" data-bs-dismiss="modal">Explanation</button>
+                    </div>
+                </div>
+                </div>
+            </div>        
+        </div>
+        
+        
+        <div id="whiskyCompare" class="col px-3">
+            <div id="header" class="py-1 justify-content-around link-dark text-decoration-none border-bottom w-75 m-auto">
+                <div class="row">
+                    <div class="col"><p class="fs-5">Compare with other whiskies</p></div>
+                    <div class="col px-4">
+                        <input id="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    </div>
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <ul id="whiskyList" class="list-group list-group-flush px-3 overflow-auto w-75 m-auto border-bottom">
+                    {% for items in whisky_list %}
+                        <li class="whiskyCheck list-group-item p-3">
+                        <input class="whiskycheck form-check-input me-1 mt-2" type="checkbox" value="{{items.whisky_code}}" name="whiskies">
+                        <strong class="mb-1">{{items.whisky_name}}</strong><br>
+                        <small class="text-muted ms-4">{{items.whisky_brand}}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div id="select-btn" class="py-3 px-4 text-center">
+                    <input id="checkAll" type="button" class="btn btn-secondary btn-sm" value="Select All"> &ensp;
+                    <input id="uncheckAll" type="button" class="btn btn-secondary btn-sm" value="Deselect All">
+                </div>
+                <div id="compare-btn" class="p-3">
+                    <input id="compare" type="submit" class="btn btn-secondary btn-sm" value="Compare"> 
+                </div>
+            </form>
+            
+        </div>
+    </div>    
+</div>
+
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'js/check_box.js' %}"></script>
+    <script src="{% static 'js/filter_search.js' %}"></script>  
+    {{script| safe}} 
+{% endblock scripts %}
